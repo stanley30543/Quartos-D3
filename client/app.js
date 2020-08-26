@@ -1,13 +1,14 @@
-const board = d3
-  .select('#gameboard')
-  .append('table'); // board is pointing to this table
+const board1 = d3
+  .select('#board')
+  .append('table')
+  .style('float', 'left'); // board is pointing to this table
 
 let boardArray = [];
 
-boardArray[0] = board.append('tr');
-boardArray[1] = board.append('tr');
-boardArray[2] = board.append('tr');
-boardArray[3] = board.append('tr');
+boardArray[0] = board1.append('tr');
+boardArray[1] = board1.append('tr');
+boardArray[2] = board1.append('tr');
+boardArray[3] = board1.append('tr');
 
 for (var i = 0; i < 4; i++) {
   var current = i;
@@ -34,8 +35,8 @@ for (var i = 0; i < 4; i++) {
       });
 }
 
-const pieces = d3
-  .select('#gamepieces')
+/* const board2 = d3
+  .select('#board')
   .append('table');
 
 var dataset = [
@@ -49,7 +50,7 @@ var dataset = [
   [2, 'white'],
   [1, 'black']
 ];
-var svg = pieces
+var svg = board2
   .append('svg')
   .attr('width', 800)
   .attr('height', 800)
@@ -63,7 +64,7 @@ svg
   .attr('r', (d) => d[0] * 40)
   .attr('cx', 400)
   .attr('cy', 400)
-  .style('fill', (d) => d[1]);
+  .style('fill', (d) => d[1]); */
 
 // const objectData = { a: 1, b: 2, c: 3, d: 4 };
 // input an object and output the keys as an array
