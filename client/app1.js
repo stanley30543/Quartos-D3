@@ -1,36 +1,29 @@
-const board1 = d3
+const board2 = d3
   .select('#board')
-  .append('table')
-  .style('float', 'left'); // board is pointing to this table
+  .append('table');
 
-let boardArray = [];
+const dataset = [
+  { id: 1, value: 5, color: 'blue'},
+  { id: 2, value: 2, color: 'gold'},
+  { id: 3, value: 4, color: 'green'},
+  { id: 4, value: 10, color: 'red'},
+  { id: 5, value: 3, color: 'purple'},
+  { id: 6, value: 7, color: 'orange'},
+  { id: 7, value: 1, color: 'yellow'}
+]
 
-boardArray[0] = board1.append('tr');
-boardArray[1] = board1.append('tr');
-boardArray[2] = board1.append('tr');
-boardArray[3] = board1.append('tr');
+const svg = board2
+  .append('svg')
+  .attr('width', 800)
+  .attr('height', 800);
 
-for (var i = 0; i < 4; i++) {
-  var current = i;
-
-  boardArray[i]
-    .selectAll('svg')
-    .data([0, 1, 2, 3])
-    .enter()
-    .append('svg')
-    .attr('width', 200)
-    .attr('height', 200)
-    .style('background-color', (d) => { return ((d + i) % 2 === 0) ? 'white' : 'black'; })
-      .selectAll('rect')
-      .data([current])
-      .enter()
-      .append('rect')
-      .attr('x', 70)
-      .attr('y', 70)
-      .attr('width', 60)
-      .attr('height', 60)
-      .style('fill', () => {
-        current++;
-        return (current % 2 === 0) ? 'white' : 'black';
-      });
-}
+svg
+  .selectAll('rect')
+  .data(dataset)
+  .enter()
+  .append('rect')
+  .attr('x', (d) => (d.id - 1) * 100)
+  .attr('y', (d) => (10 - d.value) * 80)
+  .attr('width', 100)
+  .attr('height', (d) => d.value * 80)
+  .style('fill', (d) => d.color);
